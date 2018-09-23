@@ -8,7 +8,7 @@ public class Euler028SpiralNumbers {
 
 		System.out.println("Spiral size: " + size);
 		System.out.println("Sum of diagonal numbers: " + spiralSum(size));
-		System.out.println("Elapsed time in miliseconds: " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time (in miliseconds): " + Util.stopClock(st) / 1000000);
 
 	}
 
