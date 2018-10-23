@@ -1,3 +1,9 @@
+/**
+ * Euler problem 28
+ * 
+ * @author Alex
+ *
+ */
 public class Euler028SpiralNumbers {
 
 	public static void main(String[] args) throws InterruptedException {
