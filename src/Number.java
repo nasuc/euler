@@ -206,7 +206,7 @@ public class Number {
 	private final static List<Integer> loadPrimes() {
 		System.out.println("Reading prime numbers from file ...");
 		long st = Util.startClock();
-		Path filePath = Paths.get("C:\\Users\\Alex\\eclipse-workspace\\Euler\\src\\primes.txt");
+		Path filePath = Paths.get("src\\primes.txt");
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(filePath);

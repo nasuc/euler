@@ -2,16 +2,16 @@
 public class Euler031Creative {
 
 	public static void main(String[] args) {
-		int maxx = 200;
+		int maxx = 2000;
         int[] coins = { 1, 2, 5, 10, 20, 50, 100, 200 };
-        int[] ways = new int[201];
+        long[] ways = new long[maxx+1];
         ways[0] = 1;
 
         for(int coin : coins)
             for (int i = coin; i <= maxx; i++)
                 ways[i] += ways[i - coin];
 
-        System.out.print(ways[200]);
+        System.out.print(ways[maxx]);
 
 	}
 
