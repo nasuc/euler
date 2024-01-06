@@ -12,9 +12,9 @@ public class Number {
 
 	private Long value;
 
-	public static final List<Integer> PRIMES = loadPrimes();
-	public static final HashMap<Integer, Void> PRIMES_MAP = buildMap(PRIMES);
-	public static final Integer LAST_PRIME = PRIMES.get(PRIMES.size() - 1);
+	private static final List<Integer> PRIMES = loadPrimes();
+	private static final HashMap<Integer, Void> PRIMES_MAP = buildMap(PRIMES);
+	private static final Integer LAST_PRIME = PRIMES.get(PRIMES.size() - 1);
 
 	/**
 	 * @return the value
