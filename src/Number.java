@@ -272,9 +272,5 @@ public class Number {
 		}
 		return false;
 	}
-	
-	public void luca() {
-		System.out.println("Luca !!!!");
-	}
 
 }
