@@ -2,7 +2,7 @@ public class Euler021AmicableNumbers {
 
 	public static void main(String[] args) {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 		
 		// Number number = new Number(76576500L);
 				Long sum = 0L;
@@ -17,7 +17,7 @@ public class Euler021AmicableNumbers {
 				}
 
 		System.out.println("Summ of all amiable numbers is " + sum);
-		System.out.println("Elapsed time in miliseconds: " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time in miliseconds: " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 

@@ -3,6 +3,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ public class Number {
 	private Long value;
 
 	public static final List<Integer> PRIMES = loadPrimes();
+	public static final HashMap<Integer, Void> PRIMES_MAP = buildMap(PRIMES);
 	public static final Integer LAST_PRIME = PRIMES.get(PRIMES.size() - 1);
 
 	/**
@@ -44,27 +47,34 @@ public class Number {
 	public Number(Long value) {
 		this.value = value;
 	}
-
+	
 	/**
-	 * Checks if the number given as a parameter is prime
+	 * Checks if the number given as a parameter is prime.
 	 */
-	public boolean isPrime() {
-		if (value <= 3)
-			return true;
-		if (value % 2 == 0) {
+	private boolean isPrime(Long valueToCheck) {
+		if (valueToCheck <= 1) return false;
+		if (valueToCheck == 2) return true;
+		if (valueToCheck % 2 == 0) {
 			return false;
 		}
-		if (PRIMES.size() > 0 && value <= LAST_PRIME) {
-			if (PRIMES.contains(Integer.valueOf((int) value.longValue()))) {
+		if (PRIMES.size() > 0 && valueToCheck <= LAST_PRIME) {
+			if (PRIMES_MAP.containsKey(Integer.valueOf((int) valueToCheck.longValue()))) {
 				return true;
 			}
 		}
 		for (Integer smallPrime : PRIMES) {
-			if (value % smallPrime == 0) {
+			if (valueToCheck % smallPrime == 0) {
 				return false;
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Checks if the current number is prime.
+	 */
+	public boolean isPrime() {
+		return isPrime(this.value);
 	}
 
 	/**
@@ -205,7 +215,7 @@ public class Number {
 	 */
 	private final static List<Integer> loadPrimes() {
 		System.out.println("Reading prime numbers from file ...");
-		long st = Util.startClock();
+		long st = Util.getClock();
 		Path filePath = Paths.get("src\\primes.txt");
 		Scanner scanner = null;
 		try {
@@ -221,8 +231,50 @@ public class Number {
 				scanner.next();
 			}
 		}
-		System.out.println("Reading of prime numbers complete in " + Util.stopClock(st) / 1000000 + " miliseconds");
+		System.out.println("Reading of prime numbers complete in " + Util.calculateDurationinNano(st) / 1000000 + " miliseconds");
 		return numbers;
+	}
+	
+	private static HashMap<Integer, Void> buildMap(List<Integer> primes) {
+		HashMap<Integer, Void> map = new HashMap<Integer, Void>();
+		for (Iterator<Integer> iterator = primes.iterator(); iterator.hasNext();) {
+			map.put((Integer) iterator.next(), null);
+		}
+		return map;
+	}
+	
+	public boolean isLeftTruncatable() {
+		return this.value < 10 ? false : isLeftTruncatable(this.value);
+	}
+	
+	private boolean isLeftTruncatable(Long localValue) {
+		if (localValue < 10) {
+			return isPrime(localValue);
+		}
+		if (isPrime(localValue)) {
+			return isLeftTruncatable(localValue / 10);
+		}
+		return false;
+	}
+	
+	public boolean isRightTruncatable() {
+		return this.value < 10 ? false : isRightTruncatable(this.value);
+	}
+	
+	private boolean isRightTruncatable(Long localValue) {
+		if (localValue < 10) {
+			return isPrime(localValue);
+		}
+		if (isPrime(localValue)) {
+			String localValueString = localValue.toString();
+			localValue = Long.parseLong(localValueString.substring(1));
+			return isRightTruncatable(localValue);
+		}
+		return false;
+	}
+	
+	public void luca() {
+		System.out.println("Luca !!!!");
 	}
 
 }

@@ -21,7 +21,7 @@ public class Euler030FifthPowers {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 
 		int power = 5;
 		int sumAllNumbers = 0;
@@ -40,7 +40,7 @@ public class Euler030FifthPowers {
 		}
 
 		System.out.println("Sum of all numbers: " + sumAllNumbers);
-		System.out.println("Elapsed time (in miliseconds): " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time (in miliseconds): " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 

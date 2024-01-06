@@ -47,10 +47,9 @@ public class Euler031 {
 		for (int i = 0; i < maxLevel; i++) {
 			if (solution[i] != 0) {
 				if (coins[i] >= 100) {
-					System.out.print(solution[i] + "x" + (int) (coins[i] / 100)
-							+ "€  ");
+					System.out.print(solution[i] + "x" + (int) (coins[i] / 100) + "ï¿½  ");
 				} else {
-					System.out.print(solution[i] + "x" + coins[i] + "¢  ");
+					System.out.print(solution[i] + "x" + coins[i] + "ï¿½  ");
 				}
 			}
 		}

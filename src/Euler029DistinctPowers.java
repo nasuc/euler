@@ -12,7 +12,7 @@ public class Euler029DistinctPowers {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 
 		int size = 100;
 		Set<BigDecimal> myCollection = new HashSet<BigDecimal>();
@@ -26,7 +26,7 @@ public class Euler029DistinctPowers {
 		}
 
 		System.out.println("Number of elements in myCollection: " + myCollection.size());
-		System.out.println("Elapsed time (in miliseconds): " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time (in miliseconds): " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 

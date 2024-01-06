@@ -10,7 +10,7 @@ public class Euler022NamesScores {
 
 	public static void main(String[] args) {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 
 		List<String> names = loadNames();
 		Collections.sort(names);
@@ -27,13 +27,13 @@ public class Euler022NamesScores {
 		}
 
 		System.out.println("Summ of all amiable numbers is " + sum);
-		System.out.println("Elapsed time in miliseconds: " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time in miliseconds: " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 
 	private final static List<String> loadNames() {
 		System.out.println("Reading names file ...");
-		long st = Util.startClock();
+		long st = Util.getClock();
 		Path filePath = Paths.get("C:\\Users\\Alex\\eclipse-workspace\\Euler\\src\\p022_names.txt");
 		Scanner scanner = null;
 		try {
@@ -45,7 +45,7 @@ public class Euler022NamesScores {
 		while (scanner.hasNext()) {
 			names.add(scanner.next());
 		}
-		System.out.println("Reading of names file completed in " + Util.stopClock(st) / 1000000 + " miliseconds");
+		System.out.println("Reading of names file completed in " + Util.calculateDurationinNano(st) / 1000000 + " miliseconds");
 		return names;
 	}
 

@@ -8,13 +8,13 @@ public class Euler028SpiralNumbers {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 
 		int size = 1001;
 
 		System.out.println("Spiral size: " + size);
 		System.out.println("Sum of diagonal numbers: " + spiralSum(size));
-		System.out.println("Elapsed time (in miliseconds): " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time (in miliseconds): " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 

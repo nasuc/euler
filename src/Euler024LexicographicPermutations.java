@@ -5,7 +5,7 @@ public class Euler024LexicographicPermutations {
 
 	public static void main(String[] args) {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 
 		String str = "0123456789";
 		// String str = "012";
@@ -16,7 +16,7 @@ public class Euler024LexicographicPermutations {
 		}
 		System.out.println();
 		System.out.println("Nth permutation is: " + getNthPerm(str, factoradic(nth, str.length())));
-		System.out.println("Elapsed time in miliseconds: " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time in miliseconds: " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 

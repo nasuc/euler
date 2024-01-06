@@ -5,7 +5,7 @@ public class Euler023NonAbundant {
 
 	public static void main(String[] args) {
 
-		long st = Util.startClock();
+		long st = Util.getClock();
 
 		List<Long> abundantNumbers = new ArrayList<Long>();
 		long sum = 0;
@@ -41,7 +41,7 @@ public class Euler023NonAbundant {
 		// for (long index = 12; index <= 28123; index++){ }
 
 		System.out.println("Summ of all non-abundant numbers is " + sum);
-		System.out.println("Elapsed time in miliseconds: " + Util.stopClock(st) / 1000000);
+		System.out.println("Elapsed time in miliseconds: " + Util.calculateDurationinNano(st) / 1000000);
 
 	}
 
