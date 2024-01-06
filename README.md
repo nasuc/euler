@@ -1,1 +1,1 @@
-# euler
+# projecteuler.net
