@@ -209,6 +209,52 @@ public class Number {
 		return result;
 
 	}
+	
+	/**
+	 * Returns the previous prime number strictly smaller than the current number
+	 * 
+	 * @return
+	 */
+	public Number getPreviousPrime() {
+		Number result = new Number(0l);
+		if (PRIMES.size() > 0 && value < LAST_PRIME) {
+			// the previous prime number is in the list of pre-loaded primes
+			int index = PRIMES.indexOf(Integer.valueOf(value.intValue()));
+			if (index >= 0) {
+				// number is prime so return the previous element in the list
+				if (index == 0) {
+					result.setValue(1L);
+				} else {
+					result.setValue(Long.valueOf(PRIMES.get(index - 1)));
+				}
+			} else {
+				// number is not prime so search for the previous prime number
+				for (Integer smallPrime : PRIMES) {
+					if (smallPrime > value) {
+						int nextIndex = PRIMES.indexOf(Integer.valueOf(smallPrime.intValue()));
+						result.setValue(Long.valueOf(PRIMES.get(nextIndex - 1)));
+						break;
+					}
+				}
+			}
+
+		} else {
+			// the previous prime number must be calculated
+			result.setValue(value);
+			if (result.isPrime()) {
+				result.setValue(result.getValue() - 2);
+			}
+			if (value.longValue() % 2 == 0) {
+				result.setValue(value - 1);
+			}
+			while (!result.isPrime()) {
+				result.setValue(result.getValue() - 2);
+			}
+		}
+
+		return result;
+
+	}
 
 	/**
 	 * private method to load the prime number from file in memory
@@ -271,6 +317,17 @@ public class Number {
 			return isRightTruncatable(localValue);
 		}
 		return false;
+	}
+	
+	public boolean isPandigital() {
+		String valueAsString = this.value.toString();
+		int length = valueAsString.length();
+		for (int i = 1; i<= length ; i++) {
+			if (!valueAsString.contains(String.valueOf(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }
