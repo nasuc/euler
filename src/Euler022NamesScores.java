@@ -34,7 +34,7 @@ public class Euler022NamesScores {
 	private final static List<String> loadNames() {
 		System.out.println("Reading names file ...");
 		long st = Util.getClock();
-		Path filePath = Paths.get("C:\\Users\\Alex\\eclipse-workspace\\Euler\\src\\p022_names.txt");
+		Path filePath = Paths.get("p022_names.txt");
 		Scanner scanner = null;
 		try {
 			scanner = new Scanner(filePath);
