@@ -355,5 +355,36 @@ public class Number {
 		}
 		return true;
 	}
+	
+	public long selfPower(int precision) {
+		long result = 1L;
+		for (long n = 1; n <= this.value; n++) {
+			result *= this.value;
+			if (result > (long) Math.pow(10, precision + 1)) {
+				result = result % (long) Math.pow(10, precision);
+			}
+		}
+		return result;
+	}
+	
+	public boolean hasSameDigits(Long target) {
+		char[] charSource = this.value.toString().toCharArray();
+		String stringTarget = target.toString();
+		char[] charTarget = target.toString().toCharArray();
+		
+		for (int i = 0; i < charSource.length; i++) {
+			int index = stringTarget.indexOf(charSource[i]);
+			if (index == -1) {
+				return false;
+			} else {
+				charTarget[index] = ' ';
+				stringTarget = new String(charTarget);
+			}
+		}
+		if (!stringTarget.trim().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
 
 }
