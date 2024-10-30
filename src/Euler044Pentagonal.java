@@ -4,16 +4,18 @@ import java.util.List;
 public class Euler044Pentagonal {
 	
 	private static Long minimum = 1L;
+	private static int maxElems = 10000;
+	private static int maxParser = 3000;
 	
 	public static void main(String[] args) {
 
 		Util.startClock();
 
-		List<Long> pentagonals = generatePentagonals(10000);
+		List<Long> pentagonals = generatePentagonals(maxElems);
 		System.out.println("Sum : " + pentagonals);
 		
-		for (int lowIndex = 0; lowIndex < pentagonals.size() - 1; lowIndex++) {
-			for (int highIndex = lowIndex; highIndex < pentagonals.size(); highIndex++) {
+		for (int lowIndex = 0; lowIndex < maxParser - 1; lowIndex++) {
+			for (int highIndex = lowIndex; highIndex < maxParser; highIndex++) {
 				Long low = pentagonals.get(lowIndex);
 				Long high = pentagonals.get(highIndex);
 				Long diff = high - low;

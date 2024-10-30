@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Number {
@@ -15,6 +16,8 @@ public class Number {
 	private static final List<Integer> PRIMES = loadPrimes();
 	private static final HashMap<Integer, Void> PRIMES_MAP = buildMap(PRIMES);
 	private static final Integer LAST_PRIME = PRIMES.get(PRIMES.size() - 1);
+	public static final String DIVISORS = "divisors";
+	public static final String POWERS = "powers";
 
 	/**
 	 * @return the value
@@ -95,6 +98,29 @@ public class Number {
 			}
 		}
 		return list;
+	}
+	
+	/**
+	 * Returns a map with all the prime divisors of a number.<br>
+	 * Keys are:  divisors, powers<br>
+	 * Returns empty list if the number is prime
+	 */
+	public Map<String, List<Integer>> getPrimeDivisorsAsMap() {
+		Map<String, List<Integer>> divMap = new HashMap<>();
+		divMap.put(DIVISORS, new ArrayList<Integer>());
+		divMap.put(POWERS, new ArrayList<Integer>());
+		List<Integer> divList = getPrimeDivisors();
+		
+		for (Integer div : divList) {
+			if (divMap.get(DIVISORS).contains(div)) {
+				int index = divMap.get(DIVISORS).indexOf(div);
+				divMap.get(POWERS).set(index, divMap.get(POWERS).get(index) + 1);
+			} else {
+				divMap.get(DIVISORS).add(div);
+				divMap.get(POWERS).add(1);
+			}
+		}
+		return divMap;
 	}
 
 	/**
