@@ -23,7 +23,6 @@ public class Euler030FifthPowers {
 
 		long st = Util.getClock();
 
-		int power = 5;
 		int sumAllNumbers = 0;
 
 		int sumDigits;
